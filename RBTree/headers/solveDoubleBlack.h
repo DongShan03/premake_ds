@@ -1,8 +1,8 @@
+
 template <typename T>
 void RedBlack<T>::solveDoubleBlack(BinNodePosi(T) r)
 {
     BinNodePosi(T) p = r ? r->parent : BST<T>::_hot;
-
     if (!p)
     {
         return; //r的父亲
@@ -60,18 +60,7 @@ void RedBlack<T>::solveDoubleBlack(BinNodePosi(T) r)
         p->color = RB_RED; //s转黑，p转红
         BinNodePosi(T) t = IsLChild(*s) ? s->lc : s->rc; //取t与其父s同侧
         BST<T>::_hot = p;
-        // FromParentTo(*p) = BST<T>::rotateAt(t); //对t及其父亲、祖父做平衡调整
-        if (IsRoot(*p))
-        {
-            BinTree<T>::_root = BST<T>::rotateAt(t);
-        }
-        else if (IsLChild(*p))
-        {
-            (*p).parent->lc = BST<T>::rotateAt(t);
-        }
-        else {
-            (*p).parent->rc = BST<T>::rotateAt(t);
-        }
+        FromParentTo(*p) = BST<T>::rotateAt(t); //对t及其父亲、祖父做平衡调整
         solveDoubleBlack(r); //继续修正r处双黑——此时的p已转红，故后续只能是BB-1或BB-2R
     }
 }

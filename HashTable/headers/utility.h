@@ -1,4 +1,6 @@
 
+#ifndef CLEAN_DEBUG
+#define CLEAN_DEBUG
 template <typename T> struct Cleaner {
 	static void clean(T x) { //相当于递归基
 #ifdef _DEBUG
@@ -34,7 +36,7 @@ void release(T x)
 	Cleaner<T>::clean(x);
 }
 
-
+#endif
 
 bool isPrime(int x)//素数是指一个大于一的自然数除了1和它自身外，不能被其他自然数整除的数
 {

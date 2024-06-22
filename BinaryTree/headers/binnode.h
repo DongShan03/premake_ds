@@ -1,3 +1,4 @@
+#pragma once
 #include<memory>
 #include "../../Stack/headers/stack.h"
 #include "../../Queue/headers/queue.h"
@@ -35,6 +36,8 @@ typedef enum
 } RBColor; //节点颜色
 
 
+#ifndef CLEAN_DEBUG
+#define CLEAN_DEBUG
 template <typename T>
 struct Cleaner
 {
@@ -52,6 +55,32 @@ struct Cleaner
 #endif
     }
 };
+
+template <typename T>
+struct Cleaner<T*>
+{
+    static void clean(T* x)
+    {
+        if (x)
+        {
+            delete x;
+        } //如果其中包含指针，递归释放
+
+#ifdef _DEBUG
+        static int n = 0;
+        printf("\t<%s>[%d] released\n", typeid (T*).name(), ++n);
+#endif
+    }
+};
+
+
+template <typename T>
+void release(T x)
+{
+    Cleaner<T>::clean(x);
+}
+
+#endif
 
 
 static int dice(int range)
@@ -84,29 +113,7 @@ static char dice()
 }
 
 
-template <typename T>
-struct Cleaner<T*>
-{
-    static void clean(T* x)
-    {
-        if (x)
-        {
-            delete x;
-        } //如果其中包含指针，递归释放
 
-#ifdef _DEBUG
-        static int n = 0;
-        printf("\t<%s>[%d] released\n", typeid (T*).name(), ++n);
-#endif
-    }
-};
-
-
-template <typename T>
-void release(T x)
-{
-    Cleaner<T>::clean(x);
-}
 
 template <typename T>
 struct BinNode

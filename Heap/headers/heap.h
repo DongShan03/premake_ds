@@ -1,3 +1,4 @@
+#pragma once
 #include "../../Vector/headers/vector.h"
 
 #define lt(a, b) ((a < b) ? true : false)

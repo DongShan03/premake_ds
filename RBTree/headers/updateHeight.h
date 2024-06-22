@@ -8,4 +8,3 @@ int RedBlack<T>::updateHeight(BinNodePosi(T) x)
     // 否则，rotateAt()会根据被删除节点的替代者（高度小一）设置父节点的黑高度
     return IsBlack(x) ? x->height++ : x->height; //若当前节点为黑，则计入黑深度
 } //因统一定义stature(NULL) = -1，故height比黑高度少一，好在不致影响到各种算法中的比较判断
-

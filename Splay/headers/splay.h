@@ -1,3 +1,24 @@
+template<typename NodePosi>inline //在节点*p与*lc(可能为空)之间建立父(左)子关系
+void attachAsLChild(NodePosi p, NodePosi lc)
+{
+	p->lc = lc;
+	if (lc)
+	{
+		lc->parent = p;
+	}
+}
+
+
+template<typename NodePosi> //在节点*p与*rc(可能为空)之间建立父(右)子关系
+void attachAsRChild(NodePosi p, NodePosi rc)
+{
+	p->rc = rc;
+	if (rc)
+	{
+		rc->parent = p;
+	}
+}
+
 template<typename T>//Splay树伸展算法:从节点v出发逐层伸展
 BinNodePosi(T) Splay<T>::splay(BinNodePosi(T) v)
 {

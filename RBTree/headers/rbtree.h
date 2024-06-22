@@ -1,3 +1,4 @@
+#pragma once
 #include "../../BST/headers/bst.h"
 
 using namespace std;
@@ -16,8 +17,10 @@ public:
     // BST::search()等其余接口可直接沿用
 };
 
-#include "insert.h"
-#include "remove.h"
+#include "updateHeight.h"
 #include "solveDoubleBlack.h"
 #include "solveDoubleRed.h"
-#include "updateHeight.h"
+#include "insert.h"
+#include "remove.h"
+
+

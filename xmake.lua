@@ -74,6 +74,9 @@ target("rbtree")
     add_includedirs("RBTree/headers", {public=True})
     add_files("RBTree/main.cpp")
     set_targetdir("$(projectdir)/.build")
+    -- 报错double free or corruption (fasttop)
+    -- error: execv(/home/dongshan/Documents/Cproject/DS/.build/rbtree ) failed(-1)
+    -- 问题出在删除节点时
 
 target("hashtable")
     set_kind("static")
@@ -82,12 +85,19 @@ target("hashtable")
     set_targetdir("$(projectdir)/.build")
 
 target("heap")
-    set_kind("binary")
+    set_kind("static")
     add_deps("vector")
     add_includedirs("Heap/headers", {public=True})
     add_files("Heap/main.cpp")
     set_targetdir("$(projectdir)/.build")
 
+-- target("synthesis")
+--     set_kind("binary")
+--     add_deps("vector", "list", "stack", "queue", "bitmap", "bintree", "bst", "avl", "hashtable", "heap", "splay", "btree", "rbtree")
+--     add_files("main.cpp")
+--     set_targetdir("$(projectdir)/.build")
+
 after_run(function ()
     os.rm("$(projectdir)/build")
+    
 end)

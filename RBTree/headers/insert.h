@@ -1,3 +1,4 @@
+
 template <typename T>
 BinNodePosi(T) RedBlack<T>::insert(const T& e)
 {

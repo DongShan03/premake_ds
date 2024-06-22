@@ -1,3 +1,4 @@
+#pragma once
 #include "../../Bitmap/headers/bitmap.h"
 
 using namespace std;

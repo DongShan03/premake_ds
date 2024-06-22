@@ -1,3 +1,4 @@
+
 /******************************************************************************************
  * RedBlack双红调整算法：解决节点x与其父均为红色的问题。分为两大类情况：
  *    RR-1：2次颜色翻转，2次黑高度更新，1~2次旋转，不再递归
@@ -16,9 +17,7 @@ void RedBlack<T>::solveDoubleRed(BinNodePosi(T) x)
     BinNodePosi(T) p = x->parent; if (IsBlack(p)) return; //若p为黑，则可终止调整。否则
     BinNodePosi(T) g = p->parent; //既然p为红，则x的祖父必存在，且必为黑色
     BinNodePosi(T) u = uncle(x); //以下，视x叔父u的颜色分别处理
-
-    
-    if (!u || IsBlack(u))
+    if (IsBlack(u))
     {
         //u为黑色（含NULL）时 
         if (IsLChild(*x) == IsLChild(*p)) //若x与p同侧（即zIg-zIg或zAg-zAg），则
@@ -30,22 +29,18 @@ void RedBlack<T>::solveDoubleRed(BinNodePosi(T) x)
             x->color = RB_BLACK; //x由红转黑，p保持红
         }
         g->color = RB_RED; //g必定由黑转红
-        BinNodePosi(T) r;
-        BinNodePosi(T) gg = g->parent; //曾祖父（great-grand parent）
         // 以上虽保证总共两次染色，但因增加了判断而得不偿失
             // 在旋转后将根置黑、孩子置红，虽需三次染色但效率更高
-        if (IsRoot(*g))
-        {
-            r = BinTree<T>::_root = BST<T>::rotateAt(x);
-        }
-        else if (IsLChild(*g))
+        BinNodePosi(T) gg = g->parent; //曾祖父（great-grand parent）
+        BinNodePosi(T) r;
+        if (IsRoot(*g)) {
+            r = BinTree<T>::_root = BST<T>::rotateAt(x); //调整后的子树根节点
+        } else if (IsLChild(*g))
         {
             r = (*g).parent->lc = BST<T>::rotateAt(x);
-        }
-        else {
+        } else {
             r = (*g).parent->rc = BST<T>::rotateAt(x);
         }
-        // BinNodePosi(T) r = FromParentTo(*g) = BST<T>::rotateAt(x); //调整后的子树根节点
         r->parent = gg; //与原曾祖父联接
     }
     else
@@ -61,6 +56,4 @@ void RedBlack<T>::solveDoubleRed(BinNodePosi(T) x)
         }
         solveDoubleRed(g); //继续调整g（类似于尾递归，可优化为迭代形式）
     }
-
 }
-

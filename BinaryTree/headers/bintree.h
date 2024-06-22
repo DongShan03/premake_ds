@@ -1,3 +1,4 @@
+#pragma once
 #include "binnode.h"
 
 template <typename T> class BinTree

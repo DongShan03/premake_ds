@@ -1,3 +1,4 @@
+#pragma once
 #include "../../BinaryTree/headers/bintree.h"
 
 using namespace std;

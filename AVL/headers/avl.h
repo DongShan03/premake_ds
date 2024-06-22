@@ -1,3 +1,4 @@
+#pragma once
 #include "../../BST/headers/bst.h"
 
 using namespace std;

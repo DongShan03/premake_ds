@@ -1,3 +1,4 @@
+#pragma once
 #include "btnode.h"
 
 using namespace std;
