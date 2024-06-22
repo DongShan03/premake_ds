@@ -1,2 +1,0 @@
-C:\Users\dosdiosas\Desktop\HashTable\Debug\HashTable.exe
-C:\Users\dosdiosas\Desktop\HashTable\Debug\HashTable.pdb
