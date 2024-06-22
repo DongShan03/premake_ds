@@ -13,7 +13,17 @@ bool AVL<T>::remove(const T& e)
     { //从_hot出发向上，逐层检查各代祖先g
         if (!AvlBalanced(*g)) //一旦发现g失衡，则（采用“3 + 4”算法）使之复衡，并将该子树联至
         {
-            g = FromParentTo(*g) = AVL<T>::rotateAt(tallerChild(tallerChild(g))); //原父亲
+            if (IsRoot(*g))
+            {
+                g = BinTree<T>::_root = BST<T>::rotateAt(tallerChild(tallerChild(g)));
+            }
+            else if (IsLChild(*g))
+            {
+                g = (*g).parent->lc = BST<T>::rotateAt(tallerChild(tallerChild(g)));
+            }
+            else {
+                g = (*g).parent->rc = BST<T>::rotateAt(tallerChild(tallerChild(g)));
+            }
         }
         BST<T>::updateHeight(g); //并更新其高度（注意：即便g未失衡，高度亦可能降低）
     } //可能需做Ω(logn)次调整——无论是否做过调整，全树高度均可能降低
