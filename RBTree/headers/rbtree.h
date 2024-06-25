@@ -22,5 +22,6 @@ public:
 #include "solveDoubleRed.h"
 #include "insert.h"
 #include "remove.h"
+#include "rbtvisit.h"
 
 

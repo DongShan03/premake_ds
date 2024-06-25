@@ -69,7 +69,7 @@ target("btree")
     set_targetdir("$(projectdir)/.build")
 
 target("rbtree")
-    set_kind("static")
+    set_kind("binary")
     add_deps("bst")
     add_includedirs("RBTree/headers", {public=True})
     add_files("RBTree/main.cpp")

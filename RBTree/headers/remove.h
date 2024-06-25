@@ -7,7 +7,10 @@ bool RedBlack<T>::remove(const T& e)
     {
         return false; //确认目标存在（留意_hot的设置）
     }
+    BinNodePosi(T) k = IsLChild(*x) ? BST<T>::_hot->lc : BST<T>::_hot->rc;
     BinNodePosi(T) r = BST_removeAt(x, BST<T>::_hot);
+    if (!r) r = k; 
+ 
     if (!(--BinTree<T>::_size))
     {
         return true; //实施删除
@@ -31,6 +34,7 @@ bool RedBlack<T>::remove(const T& e)
         return true;
     }
     // assert: 以下，原x（现r）均为黑色
+    cout << r->data << endl;
     solveDoubleBlack(r);
     return true; //经双黑调整后返回
 } //若目标节点存在且被删除，返回true；否则返回false

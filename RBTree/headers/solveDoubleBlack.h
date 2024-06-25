@@ -11,6 +11,7 @@ void RedBlack<T>::solveDoubleBlack(BinNodePosi(T) r)
     if (IsBlack(s))
     {
         //兄弟s为黑
+        cout << "Asd " << endl;
         BinNodePosi(T) t = NULL; //s的红孩子（若左、右孩子皆红，左者优先；皆黑时为NULL）
         if (IsRed(s->rc))
         {
