@@ -1,4 +1,4 @@
-#include "splaytree.h"//基于BST实现Splay树
+#include "headers/splaytree.h"//基于BST实现Splay树
 
 
 int main()

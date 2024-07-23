@@ -1,4 +1,4 @@
-#include "bst.h"
+#include "headers/bst.h"
 
 int main()
 {

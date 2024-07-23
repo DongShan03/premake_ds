@@ -1,4 +1,4 @@
-#include "bintree.h"
+#include "headers/bintree.h"
 
 
 //一个简单的测试用例

@@ -1,5 +1,5 @@
 
-#include "stack.h"//以向量类，派生出模板类
+#include "headers/stack.h"//以向量类，派生出模板类
 
 
 int main()
